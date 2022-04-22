@@ -1,20 +1,23 @@
 
-public class Room extends Thing {
+public class Room extends itemPlacer {
 	private int roomID;
 	private int n,s,e,w;
 	private boolean visited;
+	private PuzzleController puz;
 	
-	public Room(String thingName, String thingDescription, int roomID, int n, int s, int e,
-			int w, boolean visited) 
-	{
-		super(thingName, thingDescription);
+	public Room(String thingName, String thingDescription, itemInventory items, int roomID, int n, int s, int e, int w,
+			boolean visited, PuzzleController puz) {
+		super(thingName, thingDescription, items);
 		this.roomID = roomID;
 		this.n = n;
 		this.s = s;
 		this.e = e;
 		this.w = w;
 		this.visited = visited;
+		this.puz = puz;
 	}
+
+
 	
 	public int getRoomID() {
 		return roomID;
@@ -73,5 +76,19 @@ public class Room extends Thing {
 	public void setVisited(boolean visited) {
 		this.visited = visited;
 	}
+
+
+
+	public PuzzleController getPuz() {
+		return puz;
+	}
+
+
+
+	public void setPuz(PuzzleController puz) {
+		this.puz = puz;
+	}
+	
+	
 
 }
