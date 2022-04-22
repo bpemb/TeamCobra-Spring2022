@@ -8,8 +8,10 @@ public class Brain {
     //----Saif Shaikh-----
 	itemInventory masterItems = new itemInventory();
 	itemInventory playerItems = new itemInventory();
-    PuzzleList roomPuzzles = new PuzzleList();
+    PuzzleList roomPuzzles = new PuzzleList(); //A.M
 
+	
+	MonsterList roomMonsters = new MonsterList(); //Javier Z
     ArrayList<item> armor = new ArrayList<item>();
 	ArrayList<item> equipped = new ArrayList<item>();
 	
@@ -80,4 +82,37 @@ public class Brain {
         }
     }
 
+    
+
+    //Javier Z
+    //Reads the Monster text files and makes a list of roomMonsters
+    public void setMonster()
+    {
+    	textFile = "monsters" + ".txt";
+    	
+    	try
+    	{
+    		itemName = readFile.nextLine();
+            itemDescription = readFile.nextLine();
+            String winMsg = readFile.nextLine();
+			String loseMsg = readFile.nextLine();
+			String room = readFile.nextLine();
+			int roomID = Integer.parseInt(room);
+			String hp = readFile.nextLine();
+			int monHp = Integer.parseInt(hp);
+			String dmg = readFile.nextLine();
+			int monDmg = Integer.parseInt(dmg);
+			String thresh = readFile.nextLine();
+			int monThreshold = Integer.parseInt(thresh);
+			
+			roomMonsters.add(new Monster(itemName, itemDescription, winMsg, loseMsg, roomID, monHp, monDmg, monThreshold, Room.class.cast(location)));
+    	}
+catch (Exception e){
+        	
+        	//Error message for monster file
+            System.out.println("Reading Monster File Error!");
+            System.exit(0);
+            
+        }
+    }
 }
