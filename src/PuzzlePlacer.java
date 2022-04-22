@@ -2,7 +2,7 @@
  * @author Andrew Mooduto
  * Course: ITEC 3860 Spring 2022
  *
- *        his class contains attributes special to PuzzlePlacer.
+ *        This class contains attributes special to PuzzlePlacer.
  */
 
 public class PuzzlePlacer extends Thing {

@@ -8,8 +8,9 @@ public class Brain {
     //----Saif Shaikh-----
 	itemInventory masterItems = new itemInventory();
 	itemInventory playerItems = new itemInventory();
-	
-	ArrayList<item> armor = new ArrayList<item>();
+    PuzzleList roomPuzzles = new PuzzleList();
+
+    ArrayList<item> armor = new ArrayList<item>();
 	ArrayList<item> equipped = new ArrayList<item>();
 	
     private String itemName;
@@ -53,10 +54,30 @@ public class Brain {
             
         }
 
-	
-        
-        
-        
+    }
+
+    //A.M - Puzzle Reader. Reads puzzle from Puzzle.txt
+    public void setPuzzle() {
+        File puzzleFile = new File("puzzles.txt");
+        Scanner puzzleReader = null;
+
+        try {
+            puzzleReader = new Scanner(puzzleFile) {
+            } catch (FileNotFoundException e) {
+                System.out.println("Puzzle file not found.");
+            }
+        }
+
+        while(puzzleReader != null && puzzleReader.hasNext()) {
+            itemName = puzzleReader.nextLine();
+            itemDescription = puzzleReader.nextLine();
+            String puzzleAnswer = puzzleReader.nextLine();
+            String puzzleHint = puzzleReader.nextLine();
+            String puzzleRoom = puzzleReader.nextLine();
+            int roomID = Integer.parseInt(puzzleRoom);
+
+            roomPuzzles.add(new Puzzle(itemName, itemDescription, puzzleAnswer, puzzleHint, roomID, Room.class.cast(location)));
+        }
     }
 
 }
