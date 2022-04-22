@@ -8,3 +8,7 @@
 /itemInventory.class
 /itemPlacer.class
 /Player.class
+/Monster.class
+/MonsterHolder.class
+/MonsterList.class
+/Map.class

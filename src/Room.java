@@ -4,9 +4,11 @@ public class Room extends itemPlacer {
 	private int n,s,e,w;
 	private boolean visited;
 	private PuzzleController puz;
+	private MonsterList mon;
+	
 	
 	public Room(String thingName, String thingDescription, itemInventory items, int roomID, int n, int s, int e, int w,
-			boolean visited, PuzzleController puz) {
+			boolean visited, PuzzleController puz, MonsterList mon) {
 		super(thingName, thingDescription, items);
 		this.roomID = roomID;
 		this.n = n;
@@ -15,6 +17,7 @@ public class Room extends itemPlacer {
 		this.w = w;
 		this.visited = visited;
 		this.puz = puz;
+		this.mon = mon;
 	}
 
 
@@ -87,6 +90,18 @@ public class Room extends itemPlacer {
 
 	public void setPuz(PuzzleController puz) {
 		this.puz = puz;
+	}
+
+
+
+	public MonsterList getMon() {
+		return mon;
+	}
+
+
+
+	public void setMon(MonsterList mon) {
+		this.mon = mon;
 	}
 	
 	
