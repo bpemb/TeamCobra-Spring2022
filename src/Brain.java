@@ -13,12 +13,15 @@ public class Brain {
     //----Saif Shaikh-----
 	itemInventory masterItems = new itemInventory();
 	itemInventory playerItems = new itemInventory();
+	
+	
     PuzzleList roomPuzzles = new PuzzleList(); //A.M
 
 	//pemberton
     Map GameMap = new Map();
-	DoorMap GameDoors = new DoorMap();
-	
+    DoorDescription GameDoors = new DoorDescription();
+	Player wizard = new Player("Wizard", "Hero", playerItems, 25, GameMap.rooms.get(0), 10);
+
 	//pemberton
 	BufferedReader playerInput = new BufferedReader(new InputStreamReader(System.in));
 	Player warrior = new Player("", "", playerItems, 25, GameMap.rooms.get(0), 10);
@@ -105,6 +108,96 @@ public class Brain {
         }
 
     }
+    
+    
+	
+    //----Saif Shaikh-----
+    //this method sets the item to room
+	public void setRoomInventory(){
+		for (Room x: GameMap.rooms ){
+			
+			for (item i : masterItems){
+				
+				if(x.getRoomID() == i.getRoomID()){
+					
+					x.getInventory().add(i);
+					
+				}
+			}
+		}
+	}
+    
+    
+	//----Saif Shaikh-----
+	//this method checks player inventory
+	private void playerInventory(){
+		
+		if (equipped.size() > 0){
+			System.out.println(equipped.get(0).getItemName() + ": Equipped");
+			System.out.println("------------------------------------------");
+		}
+		
+		String s = "";
+		s = wizard.getInventory().openInventory();
+		System.out.println(s);
+		
+	}
+	
+	
+	//----Saif Shaikh-----
+	//this method tracks user input
+	private String ParseVerb(List<String> wordlist) throws Exception
+{
+		String verb;
+		String msg = "";
+		
+		verb = wordlist.get(0);
+		
+		if(!commands.contains(verb)){
+			
+			msg = verb + " is not a known command, try again.";
+			
+		}
+		else{
+			
+			switch (verb){
+			
+				case "n":
+					MovePlayer(wizard.getPlayerPosition().getN());
+					break;
+				case "s":
+					MovePlayer(wizard.getPlayerPosition().getS());
+					break;
+				case "e":
+					MovePlayer(wizard.getPlayerPosition().getE());
+					break;
+				case "w":
+					MovePlayer(wizard.getPlayerPosition().getW());
+					break;
+				case "explore":
+					playerExplore();
+					break;
+				case "inventory":
+					playerInventory();
+					break;
+				case "heal":
+					playerHeal();
+					break;
+				case "help":
+					playerHelp();
+					break;
+				default:
+					msg = verb + " is not understood.";
+					break;
+			}
+		}
+		return msg;
+		
+	}
+	
+	
+	
+	
 
     //A.M - Puzzle Reader. Reads puzzle from Puzzle.txt
     public void setPuzzle() {
