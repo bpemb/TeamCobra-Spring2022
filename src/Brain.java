@@ -28,7 +28,7 @@ public class Brain {
 	Player warrior = new Player("", "", playerItems, 25, GameMap.rooms.get(0), 10);
 
 	//pemberton
-	List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "w", "take", "drop",
+	static List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "w", "take", "drop",
 			"inventory","explore","inspect","equip", "unequip", "consume", "attack", "ignore", "help", "save", "load"));
 	
     
@@ -685,6 +685,11 @@ catch (Exception e){
 			String msg ="Where would you like to go?: \n - N(orth)\n - S(outh)\n - E(east)\n - W(est)\nPlease type a Letter. ";
 			msg += "\nOr type Help.";
 			System.out.println(msg);
-		}// end of DirectionMessage
+		}// end of DirectionMessage+
+		
+		
+		
+		
+		
 		
 }

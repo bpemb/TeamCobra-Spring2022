@@ -9,6 +9,10 @@ public abstract class TowerOfChampions {
 		BufferedReader control;
 		String input;
 		String output;
+		
+		//---saif created main menu--- 
+		MainMenuAndSounds.mainMenu();
+		
 		Brain txtGame = new Brain();
 		txtGame.Intro();
 		txtGame.setPuzzleRooms();
