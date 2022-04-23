@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -14,9 +12,9 @@ public class Brain {
     //----Saif Shaikh-----
 	itemInventory masterItems = new itemInventory();
 	itemInventory playerItems = new itemInventory();
-	
-	
-    PuzzleList roomPuzzles = new PuzzleList(); //A.M
+
+	//A.M
+    PuzzleList roomPuzzles = new PuzzleList();
 
 	//pemberton
     Map GameMap = new Map();
@@ -206,11 +204,10 @@ public class Brain {
         Scanner puzzleReader = null;
 
         try {
-            puzzleReader = new Scanner(puzzleFile) {
+            puzzleReader = new Scanner(puzzleFile);
             } catch (FileNotFoundException e) {
                 System.out.println("Puzzle file not found.");
             }
-        }
 
         while(puzzleReader != null && puzzleReader.hasNext()) {
             itemName = puzzleReader.nextLine();
@@ -224,7 +221,21 @@ public class Brain {
         }
     }
 
-    
+    //A.M - Set puzzle locations according to its assigned room.
+	public void setPuzzleRooms()
+	{
+		for (Room x: GameMap.rooms )
+		{
+			for (Puzzle i: roomPuzzles)
+			{
+				if(x.getRoomID() == i.getRoomID())
+				{
+					x.getPuz().add(i);
+
+				}
+			}
+		}
+	}
 
     //Javier Z
     //Reads the Monster text files and makes a list of roomMonsters
