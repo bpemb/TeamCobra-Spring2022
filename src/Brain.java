@@ -378,6 +378,88 @@ catch (Exception e){
     	System.out.println("Monster HP: " + GameMap.rooms.get(ID).getMon().get(0).getMonHp());
 		System.out.println("Monster Damage: " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
 		System.out.println("_________________________________________________________");
+		
+		String answer = "";
+		wizard.setPlayerHealth(playerMaxHealth);
+		Monster deadMon = new Monster(itemName, itemDescription, itemName, itemName, roomID, roomID, roomID, Room.class.cast(location));
+		
+		while(GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0 )		{
+			System.out.println("What will you do? \n Attack or Ignore?: ");
+			System.out.print("> ");
+			answer = playerInput.readLine();
+			//Typing attack starts the battle
+			if (answer.equalsIgnoreCase("Attack"))
+			{
+				System.out.println("Battle Start \n------------");
+				while(wizard.getPlayerHealth() > 0 && GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0) 
+				{
+					System.out.println("Monster Health: "+ GameMap.rooms.get(ID).getMon().get(0).getMonHp()  + "\nPlayer Health: " + wizard.getPlayerHealth());
+					System.out.println("------------");
+					System.out.println("------------");
+					System.out.println("What will you do? \n 1.Attack \n 2. Block \n 3.Heal \n 4.Inventory \n 5.Examine \n 6. Help");
+					System.out.print("> ");
+					answer = playerInput.readLine();
+			
+					//Typing Attack again attacks the monster
+					if (answer.equalsIgnoreCase("Attack"))
+					{
+						GameMap.rooms.get(ID).getMon().get(0).setMonHp(GameMap.rooms.get(ID).getMon().get(0).getMonHp() - wizard.getPlayerDmg());
+						System.out.println("You attack with all your might, and the "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " takes " +  wizard.getPlayerDmg() + " damage!");
+						
+						wizard.setPlayerHealth(wizard.getPlayerHealth() - GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
+						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, and you take " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg() + " damage!");
+
+					}
+					//blocks attack, just prints out a string, no values are changed
+					if (answer.equalsIgnoreCase("Block"))
+					{
+						System.out.println("You block the Attack!");
+					}
+				
+					//Heals the player + a free block
+					if (answer.equalsIgnoreCase("Heal"))
+					{
+						playerHeal();
+						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, but " + wizard.getThingName() + " blocks it!");
+					}
+					
+					//players health reaches 0 and dies
+					if (wizard.getPlayerHealth() <= 0)
+					{
+						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName() +" has killed " + wizard.getThingName());
+						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getLoseMsg());
+						System.out.println("What will you do?\n1.Quit \n2.Restart");
+						System.out.print("> ");
+						answer = playerInput.readLine();
+						
+						if (answer.equalsIgnoreCase("Quit"))
+						{
+							System.out.println("\nThanks for playing!");
+							System.exit(0);
+						}
+						System.out.println("\n\n Restarting the Tower of Champions");
+						if (answer.equalsIgnoreCase("Restart"))
+						{
+							TowerOfChampions.main(null);
+						}
+						else
+						{
+							System.out.println("Please enter Quit or Restart");
+						}
+					}
+					
+					
+				}
+				
+				
+			}
+			if (answer.equalsIgnoreCase("Ignore"))
+			{
+				
+				GameMap.rooms.get(ID).getMon().get(0).setMonHp(0);
+				deadMon = GameMap.rooms.get(ID).getMon().get(0);
+			}
+			}
     }
     private void playerExplore()
 	{
