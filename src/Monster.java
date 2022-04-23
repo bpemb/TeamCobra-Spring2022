@@ -8,18 +8,16 @@ public class Monster extends Thing
 	private int roomID;
 	private int monHp;
 	private int monDmg;
-	private int monThreshold;
 	private Room location;
 
 	//Constructor for our monster
 
-	public Monster(String thingName, String thingDescription, String winMsg, String loseMsg, int roomID, int monHp, int monDmg, int monThreshold,
+	public Monster(String thingName, String thingDescription, String winMsg, String loseMsg, int roomID, int monHp, int monDmg,
 			Room location) {
 		super(thingName, thingDescription);
 		this.roomID = roomID;
 		this.monHp = monHp;
 		this.monDmg = monDmg;
-		this.monThreshold = monThreshold;
 		this.location = location;
 		this.winMsg = winMsg;
 		this.loseMsg = loseMsg;
@@ -63,14 +61,6 @@ public class Monster extends Thing
 
 	public void setMonDmg(int monDmg) {
 		this.monDmg = monDmg;
-	}
-
-	public int getMonThreshold() {
-		return monThreshold;
-	}
-
-	public void setMonThreshold(int monThreshold) {
-		this.monThreshold = monThreshold;
 	}
 
 	public Room getLocation() {
