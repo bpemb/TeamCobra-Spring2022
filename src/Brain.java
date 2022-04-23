@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Brain {
@@ -242,11 +243,9 @@ public class Brain {
 			String hp = readFile.nextLine();
 			int monHp = Integer.parseInt(hp);
 			String dmg = readFile.nextLine();
-			int monDmg = Integer.parseInt(dmg);
-			String thresh = readFile.nextLine();
-			int monThreshold = Integer.parseInt(thresh);
+			int monDmg = Integer.parseInt(dmg);			
 			
-			roomMonsters.add(new Monster(itemName, itemDescription, winMsg, loseMsg, roomID, monHp, monDmg, monThreshold, Room.class.cast(location)));
+			roomMonsters.add(new Monster(itemName, itemDescription, winMsg, loseMsg, roomID, monHp, monDmg, Room.class.cast(location)));
     	}
 catch (Exception e){
         	
@@ -255,9 +254,108 @@ catch (Exception e){
             System.exit(0);
             
         }
-    }
+    	
+    	//sets the monsters roomID by placing their possible locations into a list and picking a random location from the list to set the roomID
+    	
+    	//Brushmaster Monster
+    	for (Monster x: roomMonsters)
+		{
+    		if (x.getThingName().equalsIgnoreCase("Brushmaster Monster"))
+			{
+    		List<Integer> list = new ArrayList<>(Arrays.asList(1, 2, 3)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+			}
+		
+    	//Aspissorous Monster
+    	if (x.getThingName().equalsIgnoreCase("Aspissorous"))
+		{
+
+		    List<Integer> list = new ArrayList<>(Arrays.asList(6, 7)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	//Marauder Monster 
+    	if (x.getThingName().equalsIgnoreCase("Marauder"))
+		{
+		    List<Integer> list = new ArrayList<>(Arrays.asList(6, 17)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	//Sword Monster
+    	if (x.getThingName().equalsIgnoreCase("Sword Monster"))
+		{
+		    List<Integer> list = new ArrayList<>(Arrays.asList(7,8,10,15)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	
+    	
+    	//Viciossor Monster
+    	if (x.getThingName().equalsIgnoreCase("Viciossor"))
+		{
+		    List<Integer> list = new ArrayList<>(Arrays.asList(11, 13)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	//Arroziossor Monster
+    	if (x.getThingName().equalsIgnoreCase("Arroziossor"))
+		{
+
+		    List<Integer> list = new ArrayList<>(Arrays.asList(8, 11)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	//Razoriossor monster
+    	if (x.getThingName().equalsIgnoreCase("Razoriossor"))
+		{
+		    List<Integer> list = new ArrayList<>(Arrays.asList(10, 12)); 
+	        int result;
+	        Random rand = new Random(); 
+	        result = list.get(rand.nextInt(list.size()));
+	        x.setRoomID(result);
+		}
+    	
+    	
+    	
+		}
+		}
     
-    
+    //sets the monster into their rooms if room and monster share the same roomID
+    public void setMonsterRooms()
+	{
+		for (Room r: GameMap.rooms )
+		{
+			for (Monster m: roomMonsters)
+			{
+				if(r.getRoomID() == m.getRoomID())
+				{
+					
+					r.getMon().add(m);
+					
+					
+				}
+			}
+		}
+	}
+
     private void playerExplore()
 	{
 		String s = "";
