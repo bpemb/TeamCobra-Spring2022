@@ -338,6 +338,7 @@ catch (Exception e){
 		}
 		}
     
+    //Javier
     //sets the monster into their rooms if room and monster share the same roomID
     public void setMonsterRooms()
 	{
@@ -356,6 +357,17 @@ catch (Exception e){
 		}
 	}
 
+    //Javier 
+    public void MonsterController(int ID)
+    {
+    	//Prints the monster in the room with their stats
+    	System.out.println(" M O N S T E R ༼ง ◉_◉༽ง   ");
+    	System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName());
+    	System.out.println("MONSTER STATS:");
+    	System.out.println("Monster HP: " + GameMap.rooms.get(ID).getMon().get(0).getMonHp());
+		System.out.println("Monster Damage: " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
+		System.out.println("_________________________________________________________");
+    }
     private void playerExplore()
 	{
 		String s = "";
