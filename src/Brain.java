@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Brain {
 
 
@@ -538,9 +541,37 @@ public class Brain {
 						answer = playerInput.readLine();
 
 						if (answer.equalsIgnoreCase("Quit"))
-						{
-							System.out.println("\nThanks for playing!");
-							System.exit(0);
+						{	
+							MainMenuAndSounds gameEnd = new MainMenuAndSounds();
+							
+								try {
+									try 
+									{
+										System.out.println("\nThanks for playing!");
+										gameEnd.GameEnd();
+									   Thread.sleep(12000);
+									} 
+									catch (InterruptedException e) 
+									{
+									   // log the exception.
+									}
+									
+									
+								} catch (UnsupportedAudioFileException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (IOException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} catch (LineUnavailableException e) {
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								} finally {
+									
+									System.exit(0);
+								}
+								
+							
 						}
 						System.out.println("\n\n Restarting the Tower of Champions");
 						if (answer.equalsIgnoreCase("Restart"))
