@@ -20,6 +20,22 @@ public class MonsterList extends ArrayList<Monster> {
 		}
 		return noMonster ;
 	}
+	public Monster thisItem (String monName)
+	{
+		Monster aMon = null;
+		String mon = "";
+		String monLowCase = monName.trim().toLowerCase();
+		
+		for (Monster x: this)
+		{
+			mon = x.getThingName().trim().toLowerCase();
+			if (mon.equals(monLowCase))
+			{
+				aMon = x;
+			}
+		}
+		return aMon;
+	}
 	
 
 }
