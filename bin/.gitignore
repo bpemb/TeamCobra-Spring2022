@@ -1,4 +1,9 @@
 /Brain.class
+/Map.class
+/Monster.class
+/MonsterHolder.class
+/MonsterList.class
+/Player.class
 /Puzzle.class
 /PuzzlePlacer.class
 /Room.class
@@ -7,8 +12,9 @@
 /item.class
 /itemInventory.class
 /itemPlacer.class
-/Player.class
-/Monster.class
-/MonsterHolder.class
-/MonsterList.class
-/Map.class
+/Door.class
+/DoorDescription.class
+/GameOver.wav
+/MainMenuAndSounds.class
+/MusicBox.wav
+/PuzzleList.class

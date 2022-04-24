@@ -19,7 +19,6 @@ public class Brain {
 	//pemberton
     Map GameMap = new Map();
     DoorDescription GameDoors = new DoorDescription();
-	Player wizard = new Player("Wizard", "Hero", playerItems, 25, GameMap.rooms.get(0), 10);
 
 	//pemberton
 	BufferedReader playerInput = new BufferedReader(new InputStreamReader(System.in));
@@ -61,10 +60,6 @@ public class Brain {
 		setMonster();
 		setItems();
 		
-		
-		int max = 50;
-		int min = 0;
-		monsterDmgThreshold = (int)Math.floor(Math.random()*(max-min+1)+min);
 		
 		String msg;
 		msg = warrior.getPlayerPosition().getThingDescription();
@@ -137,7 +132,7 @@ public class Brain {
 		}
 		
 		String s = "";
-		s = wizard.getInventory().openInventory();
+		s = warrior.getInventory().openInventory();
 		System.out.println(s);
 		
 	}
@@ -162,16 +157,16 @@ public class Brain {
 			switch (verb){
 			
 				case "n":
-					MovePlayer(wizard.getPlayerPosition().getN());
+					MovePlayer(warrior.getPlayerPosition().getN());
 					break;
 				case "s":
-					MovePlayer(wizard.getPlayerPosition().getS());
+					MovePlayer(warrior.getPlayerPosition().getS());
 					break;
 				case "e":
-					MovePlayer(wizard.getPlayerPosition().getE());
+					MovePlayer(warrior.getPlayerPosition().getE());
 					break;
 				case "w":
-					MovePlayer(wizard.getPlayerPosition().getW());
+					MovePlayer(warrior.getPlayerPosition().getW());
 					break;
 				case "explore":
 					playerExplore();
@@ -394,7 +389,6 @@ catch (Exception e){
 		System.out.println("_________________________________________________________");
 		
 		String answer = "";
-		wizard.setPlayerHealth(playerMaxHealth);
 		Monster deadMon = new Monster(itemName, itemDescription, itemName, itemName, roomID, roomID, roomID, Room.class.cast(location));
 		
 		while(GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0 )		{
@@ -405,9 +399,9 @@ catch (Exception e){
 			if (answer.equalsIgnoreCase("Attack"))
 			{
 				System.out.println("Battle Start \n------------");
-				while(wizard.getPlayerHealth() > 0 && GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0) 
+				while(warrior.getPlayerHealth() > 0 && GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0) 
 				{
-					System.out.println("Monster Health: "+ GameMap.rooms.get(ID).getMon().get(0).getMonHp()  + "\nPlayer Health: " + wizard.getPlayerHealth());
+					System.out.println("Monster Health: "+ GameMap.rooms.get(ID).getMon().get(0).getMonHp()  + "\nPlayer Health: " + warrior.getPlayerHealth());
 					System.out.println("------------");
 					System.out.println("------------");
 					System.out.println("What will you do? \n 1.Attack \n 2. Block \n 3.Heal \n 4.Inventory \n 5.Examine \n 6. Help");
@@ -417,10 +411,10 @@ catch (Exception e){
 					//Typing Attack again attacks the monster
 					if (answer.equalsIgnoreCase("Attack"))
 					{
-						GameMap.rooms.get(ID).getMon().get(0).setMonHp(GameMap.rooms.get(ID).getMon().get(0).getMonHp() - wizard.getPlayerDmg());
-						System.out.println("You attack with all your might, and the "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " takes " +  wizard.getPlayerDmg() + " damage!");
+						GameMap.rooms.get(ID).getMon().get(0).setMonHp(GameMap.rooms.get(ID).getMon().get(0).getMonHp() - warrior.getPlayerDmg());
+						System.out.println("You attack with all your might, and the "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " takes " +  warrior.getPlayerDmg() + " damage!");
 						
-						wizard.setPlayerHealth(wizard.getPlayerHealth() - GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
+						warrior.setPlayerHealth(warrior.getPlayerHealth() - GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
 						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, and you take " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg() + " damage!");
 
 					}
@@ -434,7 +428,7 @@ catch (Exception e){
 					if (answer.equalsIgnoreCase("Heal"))
 					{
 						playerHeal();
-						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, but " + wizard.getThingName() + " blocks it!");
+						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, but " + warrior.getThingName() + " blocks it!");
 					}
 					//checks the current inventory
 					if (answer.equalsIgnoreCase("Inventory"))
@@ -467,9 +461,9 @@ catch (Exception e){
 				}
 					
 					//players health reaches 0 and dies
-					if (wizard.getPlayerHealth() <= 0)
+					if (warrior.getPlayerHealth() <= 0)
 					{
-						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName() +" has killed " + wizard.getThingName());
+						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName() +" has killed " + warrior.getThingName());
 						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getLoseMsg());
 						System.out.println("What will you do?\n1.Quit \n2.Restart");
 						System.out.print("> ");
@@ -505,9 +499,9 @@ catch (Exception e){
 		}
 		
 		//Victory mechanic, ,monster is defeated and item is displayed + added to inventory
-		if (GameMap.rooms.get(ID).getMon().get(0).getMonHp() <= 0 && wizard.getPlayerHealth() > 0)
+		if (GameMap.rooms.get(ID).getMon().get(0).getMonHp() <= 0 && warrior.getPlayerHealth() > 0)
 		{
-			System.out.println(wizard.getThingName() + " has Won!");
+			System.out.println(warrior.getThingName() + " has Won!");
 			System.out.println("\n"+GameMap.rooms.get(ID).getMon().get(0).getWinMsg() + "\n");
 			
 			for (item x: masterItems) 

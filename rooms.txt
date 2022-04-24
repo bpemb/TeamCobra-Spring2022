@@ -1,0 +1,200 @@
+Entrance
+The starting room is squared shape filled with illusions. 
+These illusions are what you truly desire, waiting for you on the top floor in the last room. 
+Three wooden doors wait for you.
+0
+2
+3
+1
+-1
+false
+Sword
+You're in a stone checker tile room, in front of you is a wooden door. 
+On the walls, you see swords from fallen warriors. 
+Ahead of you seems like a straight path, or is it?
+1
+-1
+-1
+4
+0
+false
+Bloody
+As you enter the room, you see blood dripping from the walls and ceiling. 
+You see the corpse of fallen warriors in each corner of the room. 
+This room gives you nothing but chills.
+2
+-1
+0
+-1
+-1
+false
+Chess
+This room has a chest piece of a castle on the floor. 
+The walls the bright crystal enough to see one own reflection. 
+As you look at your reflection you notice a possible shadow of some sort
+3
+0
+-1
+-1
+-1
+false
+Library
+Many bookshelves surround the room. You notice some books have fallen on the floor scattered across. 
+There is a red chair looking like a nice place to sit. 
+As you look at your reflection you notice a possible shadow of some sort
+4
+-1
+5
+-1
+1
+false
+Mirror
+this room is in a circular shape. 
+The whole room likes a mirror, there seem like there is no door. 
+All you see if you reflection all throughout the room
+5
+4
+-1
+-1
+6
+false
+Aqua
+You find yourself in a room filled with water up to your knees. 
+As you take another step, you notice the water start to rise ever so slowly. 
+Looking around you can see scraps of dead fish, hopefully, what ate them doesn't appear
+6
+-1
+7
+5
+8
+false
+Cave
+This room has no type of lighting beside from the door you came from. 
+You can hear a lot of echoes around this strange room. 
+After clever thinking you discovered you in a cave with no way out 
+7
+6
+-1
+-1
+-1
+false
+Slim
+Unlike the previous room where there was, this room is covered with green slim. 
+The slim so thick it is covering up all the walls and you can’t see any doors. 
+As you look more closely through the walls you see a small knob to your left.
+8
+-1
+9
+6
+-1
+false
+Dessert
+You reach the final room of level 2. Scorching heat blast you as enter this room. 
+You can see the ceiling is made up of glass. 
+The floor is just red sand and walls are made of sandstone all looking like desert
+9
+8
+10
+-1
+-1
+false
+Purple Triangle
+The room structure changed again, the room is the shape of a triangle. 
+This room is small, enough for you and possibly one creature to fit. 
+Both the floor and walls have a purple triangle design pattern
+10
+9
+-1
+11
+-1
+false
+Winter Land
+The temperature immediately changes to some below freezing. 
+Ice has completely covered the floor along with small piles of snow. 
+Up above you can see a key
+11
+13
+14
+12
+10
+false
+Fog
+The temperature starts to warm up, feels very humid in here. 
+Any ice or water that managed to enter the room has vaporized and made the room foggy. 
+The fog has made it impossible to see anything than 2 ft ahead but you see a big monster shadow 
+12
+-1
+-1
+-1
+11
+false
+Puzzle
+The door shuts and locks behind you. 
+There are no other doors but the puzzle you must solve. 
+The walls and the floor is made out of purple stone so there is no escape
+13
+-1
+11
+-1
+-1
+false
+Throne Chair
+There is a chair in the middle forged of swords from fallen warriors. 
+The room is completely empty and yet you feel the presence of someone else. 
+There is another door up ahead across the chair
+14
+11
+15
+-1
+-1
+false
+Sewage
+The room reeks of waste, you see two drains leaking some type of sewage all over the ground. 
+There yet another drain in the middle collecting all of it.  
+This half of this weird green liquid turns to vapor as it touches the ground.
+15
+14
+-1
+16
+-1
+false
+Alchemists
+The tunnel lead you to a room of potions. 
+Around you brewing stand and cauldrons everywhere. 
+You see all types of potions and mixture hung up on shelf's
+16
+17
+-1
+18
+15
+false
+Wine
+As soon as you enter you can smell the delicious wine all over. 
+You see bottles and bottles stacked over the shelves and barrels. 
+Yet you notice a red texture that doesn't seem like typical red wine
+17
+-1
+16
+-1
+-1
+false
+Clock
+The room is filled with clocks all over. 
+On your left side, there is a huge clock with the wrong time. 
+There is an hourglass, with your name on it. What can this mean?
+18
+-1
+19
+-1
+16
+false
+Top
+Reaching the top of the tower, the view one sees is breathtaking. 
+The castle rewards you what was promised you deep desire await right next to you. 
+You win
+19
+18
+-1
+-1
+-1
+false

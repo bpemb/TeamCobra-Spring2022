@@ -63,7 +63,7 @@ public class Map {
 				boolean visited = Boolean.parseBoolean(booleanVisited);
 				
 				itemInventory inv = new itemInventory();
-				PuzzleController puz = new PuzzleController(); 
+				PuzzleList puz = new PuzzleList(); 
 				MonsterList mon = new MonsterList();
 				rooms.add(new Room(roomName, roomDescription, inv, ID, north, south, east, west, visited, puz, mon ));
 				
