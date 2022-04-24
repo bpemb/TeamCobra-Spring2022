@@ -367,9 +367,23 @@ catch (Exception e){
 			}
 		}
 	}
+  //Javier
+    public void setMonsterItems()
+	{
+		for (item i: masterItems)
+		{
+			for (Monster m: roomMonsters)
+			{
+				if (i.getMonLocation().equalsIgnoreCase(m.getThingName()))
+				{
+					i.setRoomID(m.getRoomID());
+				}
+			}
+		}
+	}
 
     //Javier 
-    public void MonsterController(int ID)
+    public void MonsterController(int ID) throws IOException
     {
     	//Prints the monster in the room with their stats
     	System.out.println(" M O N S T E R ༼ง ◉_◉༽ง   ");
@@ -422,6 +436,35 @@ catch (Exception e){
 						playerHeal();
 						System.out.println("The "+ GameMap.rooms.get(ID).getMon().get(0).getThingName() + " attacks, but " + wizard.getThingName() + " blocks it!");
 					}
+					//checks the current inventory
+					if (answer.equalsIgnoreCase("Inventory"))
+					{
+						String command;
+						
+						playerInventory();
+						
+						System.out.println("Equip or Unequip an item?");
+						System.out.print("> ");
+						command = playerInput.readLine();
+						List<String> wl;
+						String lowstr = command.trim().toLowerCase();
+						wl = wordList(lowstr);
+						 parseCommand(wl);
+					
+					}
+					//examines the current monster 
+					if (answer.equalsIgnoreCase("Examine"))
+					{
+						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingDescription()+ "\n----");
+						System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName() + "'s Damage: " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg()+ "\n");
+					}
+					
+					//displays help message and commands
+					if (answer.equalsIgnoreCase("Help"))
+					{
+						playerHelp();
+					}
+				}
 					
 					//players health reaches 0 and dies
 					if (wizard.getPlayerHealth() <= 0)
@@ -449,18 +492,41 @@ catch (Exception e){
 					}
 					
 					
+					
 				}
 				
-				
-			}
+	
 			if (answer.equalsIgnoreCase("Ignore"))
 			{
 				
 				GameMap.rooms.get(ID).getMon().get(0).setMonHp(0);
 				deadMon = GameMap.rooms.get(ID).getMon().get(0);
 			}
+		}
+		
+		//Victory mechanic, ,monster is defeated and item is displayed + added to inventory
+		if (GameMap.rooms.get(ID).getMon().get(0).getMonHp() <= 0 && wizard.getPlayerHealth() > 0)
+		{
+			System.out.println(wizard.getThingName() + " has Won!");
+			System.out.println("\n"+GameMap.rooms.get(ID).getMon().get(0).getWinMsg() + "\n");
+			
+			for (item x: masterItems) 
+			{
+				if (x.getMonLocation().equalsIgnoreCase(GameMap.rooms.get(ID).getMon().get(0).getThingName()))
+				{
+					
+					TakeItem(x.getItemName());
+				}
 			}
-    }
+			
+		}
+		
+		GameMap.rooms.get(ID).getMon().remove(deadMon);
+		System.out.println("----\nYou're still in the " + GameMap.rooms.get(ID).getThingName()+" room.");
+			}
+
+    
+    
     private void playerExplore()
 	{
 		String s = "";
