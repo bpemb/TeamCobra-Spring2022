@@ -13,7 +13,7 @@ public class Puzzle extends Thing {
     private int roomID;
     private Room location;
 
-    public Puzzle(String thingName, String thingDescription, String puzzleAnswer, int puzzleAttempts, String puzzleHint, int roomID,
+    public Puzzle(String thingName, String thingDescription, String puzzleAnswer, String puzzleHint, int roomID,
                   Room location) {
         super(thingName, thingDescription);
         this.puzzleAnswer = puzzleAnswer;

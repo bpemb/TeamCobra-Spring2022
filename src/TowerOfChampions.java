@@ -11,8 +11,15 @@ public abstract class TowerOfChampions {
 		String input;
 		String output;
 		
-		//---saif created main menu--- 
-		MainMenuAndSounds.mainMenu();
+		//---saif created main menu---
+
+		MainMenuAndSounds menu = new MainMenuAndSounds();
+		try {
+			menu.mainMenu();
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		}
 		
 		Brain txtGame = new Brain();
 		txtGame.Intro();

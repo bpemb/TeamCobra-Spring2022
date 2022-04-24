@@ -26,7 +26,7 @@ public class Brain {
 
 	//pemberton
 	static List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "w", "take", "drop",
-			"inventory","explore","inspect","equip", "unequip", "consume", "attack", "ignore", "help", "save", "load","use"));
+			"inventory","explore","inspect","equip", "unequip", "consume", "attack", "ignore", "help", "save", "load"));
 
 
 	MonsterList roomMonsters = new MonsterList(); //Javier Z
@@ -180,9 +180,6 @@ public class Brain {
 				case "help":
 					playerHelp();
 					break;
-				case "use":
-					playerUse();
-					break;
 				default:
 					msg = verb + " is not understood.";
 					break;
@@ -208,13 +205,11 @@ public class Brain {
             itemName = puzzleReader.nextLine();
             itemDescription = puzzleReader.nextLine();
             String puzzleAnswer = puzzleReader.nextLine();
-            String attemptNumber = puzzleReader.nextLine();
-            int puzzleAttempts = Integer.parseInt(attemptNumber);
             String puzzleHint = puzzleReader.nextLine();
             String puzzleRoom = puzzleReader.nextLine();
             int roomID = Integer.parseInt(puzzleRoom);
 
-			roomPuzzles.add(new Puzzle(itemName, itemDescription, puzzleAnswer, puzzleAttempts, puzzleHint, roomID, Room.class.cast(location)));
+			roomPuzzles.add(new Puzzle(itemName, itemDescription, puzzleAnswer, puzzleHint, roomID, Room.class.cast(location)));
         }
     }
 
@@ -569,154 +564,8 @@ catch (Exception e){
 		GameMap.rooms.get(ID).getMon().remove(deadMon);
 		System.out.println("----\nYou're still in the " + GameMap.rooms.get(ID).getThingName()+" room.");
 			}
-//Javier
-	private void playerConsume(String item)
-	{
-		item consumed = new item(null, null, roomID, location, roomID, roomID, null, false);
-		for (item x: warrior.getInventory()) 
-		{
-			if (x.getItemName().equalsIgnoreCase(item))
-			{
-				consumed = x;
-				
-				
-				System.out.println(warrior.getThingName() + " has consumed the " + x.getItemName());
-			}
-			
-		}
-		warrior.getInventory().remove(consumed);
-	}
-	
-	//Javier
-	private void playerUse() throws IOException{
-	
-		if(equipped.isEmpty() == false)
-		{
-			
-		
-		if(equipped.get(0).getThingName().equalsIgnoreCase("Teleportation"))
-		{
-			int pos = warrior.getPlayerPosition().getRoomID() ;
-			System.out.println("--------------------T E L E P O R T I N G------------------- ");
-			if(warrior.getPlayerPosition().getRoomID() <= 4)
-			{
-			
-				warrior.setPlayerPosition(GameMap.rooms.get(5));
-				
-				warrior.getPlayerPosition().setVisited(true);
-
-				pos = 5;
-				
-				System.out.println(warrior.getPlayerPosition().getThingDescription());
-				System.out.println(" ");
-
-				
-				UnequipItem("Teleportation");
-				playerConsume("Teleportation");
-				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
-				{
-					PuzzleController(pos);
-				}
-				
-				if(warrior.getPlayerPosition().getMon().size() >= 1) 
-				{
-					MonsterController(pos);
-				}
-				DirectionMessage();
-				
-			}
-			
-			else if (warrior.getPlayerPosition().getRoomID() <= 9)
-			{
-			
-				pos = 10;
-				warrior.setPlayerPosition(GameMap.rooms.get(10));
-				warrior.getPlayerPosition().setVisited(true);
-				System.out.println(warrior.getPlayerPosition().getThingDescription());
-				System.out.println(" ");
-				UnequipItem("Teleportation");
-				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
-				{
-					PuzzleController(pos);
-				}
-				
-				if(warrior.getPlayerPosition().getMon().size() >= 1) 
-				{
-					MonsterController(pos);
-				}
-				DirectionMessage();
-			}
-			
-			else if(warrior.getPlayerPosition().getRoomID() <= 14)
-			{
-			
-				pos = 15;
-				warrior.setPlayerPosition(GameMap.rooms.get(15));
-				warrior.getPlayerPosition().setVisited(true);
-				
-				System.out.println(warrior.getPlayerPosition().getThingDescription());
-				System.out.println(" ");
 
 
-
-				UnequipItem("Teleportation");
-
-				
-				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
-				{
-					PuzzleController(pos);
-				}
-				
-				if(warrior.getPlayerPosition().getMon().size() >= 1) 
-				{
-					MonsterController(pos);
-				}
-				DirectionMessage();
-			}
-				
-			
-			else if(warrior.getPlayerPosition().getRoomID() <= 18)
-			{
-			
-				pos = 19;
-				warrior.setPlayerPosition(GameMap.rooms.get(19));
-				warrior.getPlayerPosition().setVisited(true);
-				
-
-				System.out.println(warrior.getPlayerPosition().getThingDescription());
-				System.out.println(" ");
-				UnequipItem("Teleportation");
-				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
-				{
-					PuzzleController(pos);
-				}
-				
-				if(warrior.getPlayerPosition().getMon().size() >= 1) 
-				{
-					MonsterController(pos);
-				}
-				DirectionMessage();
-			
-			}
-			else
-			{
-				System.out.println("cannot use that item in the final room");
-			}
-			
-			
-			
-		}
-		else
-		{
-			System.out.println("You don't have a teleportation consumable");
-		}
-		
-		}
-		else
-		{
-			System.out.println("You don't have teleportation equipped");
-		}
-	}
 
     private void playerExplore()
 	{
