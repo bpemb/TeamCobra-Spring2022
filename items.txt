@@ -1,0 +1,84 @@
+dagger
+A very short knife that is very agile in close range and lands more hits but less powerful
+111111
+3
+0
+Brushmaster Monster
+false
+sword
+A heavy sword that looks powerful but slow in the close range
+1111111
+6
+0
+Sword Monster
+false
+helmet 
+More protection from the monster.
+1111111
+0
+10
+Marauder
+true
+chestplate
+Some protection for your chest.
+1111111
+0
+12
+Viciossor
+true
+boots
+Some protection for your feet.
+111111
+0
+7
+Razoriossor
+true
+potion
+Restore some of your health
+111111
+0
+2
+Arroziossor
+false
+apple
+Return 3+ health back to the player.
+11111111
+0
+3
+Brushmaster Monster
+false
+shield
+A barrier between you and the monsters.
+11111
+0
+7
+Aspissorous
+true
+Rotten apples 
+Take away health.
+11111
+0
+-3
+bongo
+false
+key 
+A key for a locked door.
+1111111
+0
+0
+Arroziossor
+false
+Teleportation Consumable 
+This 1 consumable allows the player to teleport
+11111
+0
+0
+Sword Monster
+false
+Dragon Head 
+head from a behead dragon
+19
+0
+0
+Dragon
+false

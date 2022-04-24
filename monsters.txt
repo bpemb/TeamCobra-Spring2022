@@ -1,0 +1,56 @@
+Brushmaster Monster
+A guy dressed ln camouflage with his dagger appears Infront of you, what are you going to do? 
+Hooray your first battle trophy is a dragger
+Tomorrow is another day
+1
+30
+5
+Marauder
+Laying on the corner is the monster with its sword. It must be the Marauder  
+Victory is as sweet as taking a helmet 
+This tough cookie is hard to bite 
+6
+35
+10
+Sword Monster
+The room is so bright it blinds your eye, it’s from the lightening Sword
+You fought well!! Here is my sword you deserve it said the sword monster
+It took you all this time to lose. Try again next time
+7
+35
+15
+Aspissorous
+You can’t see his face it's covered with a Viking-looking shield, what do you do? 
+This is what you need to face the sword monster  
+Tomorrow is another day
+6
+35
+5
+Viciossor
+The Viciossor is holding a hammer as big as his height
+You got the battle armor chest plate; victory Is near
+Was an uphill battle
+11
+20
+10
+Razoriossor
+The monster with a large dragger and steel boots appears in the middle of the room
+Finally, you won, victory is on your hand
+Nobody wins without losing a few times on the way
+10
+25
+5
+Arroziossor
+There is a giant guy, standing by the door with a flaming arrow
+You got the key, nothing you can’t do now
+you didn’t lose the game; you just need a break
+8
+15
+10
+Dragon
+An enormous black dragon with a purple stomach appears. With its scorching purple flames
+You beat the unbeatable dragon and collect its head
+The unbeatable claims yet another challenger
+19
+45
+15

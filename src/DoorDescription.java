@@ -42,7 +42,7 @@ public class DoorDescription {
 		{
 			
 		}
-		finally{readFile.close();}
+		
 		
 	}
 

@@ -12,7 +12,6 @@ public abstract class TowerOfChampions {
 		String output;
 		
 		//---saif created main menu---
-
 		MainMenuAndSounds menu = new MainMenuAndSounds();
 		try {
 			menu.mainMenu();
@@ -22,6 +21,7 @@ public abstract class TowerOfChampions {
 		}
 		
 		Brain txtGame = new Brain();
+		
 		txtGame.Intro();
 		txtGame.setPuzzleRooms();
 		txtGame.setMonsterRooms();

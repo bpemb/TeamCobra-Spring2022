@@ -1,0 +1,114 @@
+A door made of nothing but pure bones with a sharp knob
+0
+2
+A white metal gate stretching towards the ceiling
+0
+1
+A wooden door as tall enough to reach a man height but thicker than a bookshelf
+0
+3
+A normal red door with a yellow knob
+1
+4
+A white metal gate stretching towards the ceiling
+1
+0
+A door made of nothing but pure bones with a sharp knob
+2
+0
+A wooden door as tall enough to reach a man height but thicker than a bookshelf
+3
+0
+A normal red door with a yellow knob
+4
+1
+A circular door made of dark glass
+4
+5
+A mirror door, only way to open it is with a simple push
+5
+6
+a circular door made of dark glass
+5
+4
+A mirror door, only way to open is with a simple push
+6
+5
+A black solid steel door with no clue what can be on the other side
+6
+7
+This door is covered all with green slim and moss
+6
+8
+A black solid steel door with no clue what can be on the other side
+7
+6
+This door is covered with green slime and moss
+8
+7
+A green door painted with a yellow sun symbol
+8
+9
+A green door painted with a yellow sun symbol
+9
+8
+A triangle-shaped door with cut edges along the top of it
+9
+10
+A triangle-shaped door with cut edges along the top of it
+10
+9
+A blue wooden door with the knob yellow know cold to the touch
+10
+11
+A blue wooden door with a yellow knob cold to the touch
+11
+10
+A sliver brick door with “Withdraw” written on it
+11
+14
+A fence like a door with steam coming out of the cracks and wedge of the door
+11
+12
+A purple steel door tall enough to reach the ceiling, covered with yellow question marks
+11
+13
+A fence like a door with steam going through the cracks
+12
+11
+A purple steel door tall enough to reach the ceiling, covered with yellow question
+13
+11
+A silver brick door with “Return will you can” written on it
+14
+11
+A heavy wooden door with two handles to use to open, “Beware” is written all over
+14
+15
+A heavy wooden door with two handles to use to open, “Beware” is written all over
+15
+14
+There is no door just a deep dark tunnel
+15
+16
+There is no door just a deep dark tunnel
+16
+15
+A circular stone door, opening it looks like turning a wheel
+16
+18
+A barrel shape wooden door with the hinges connect at the top instead of the side
+16
+17
+A barrel shape wooden door with the hinges connect at the top instead of the side
+17
+16
+A circular stone door, opening it looks like turning a wheel
+18
+16
+A staircase with sunlight shining down on the bottom steps.
+18
+19
+A staircase
+19
+18

@@ -74,13 +74,19 @@ public class Brain {
     //----Saif Shaikh-----
     //Reads items.txt and add everything to master items
     public void setItems(){
-        textFile = "item.txt";
+        textFile = "items" + ".txt";
         try {
+        	
+        	readFile = new Scanner(new File(textFile));
+			
+			while(readFile.hasNextLine())
+			{
 
             itemName = readFile.nextLine();
             itemDescription = readFile.nextLine();
             room = readFile.nextLine();
             roomID = Integer.parseInt(room);
+           
             String dmg = readFile.nextLine();
             int itemDmg = Integer.parseInt(dmg);
 
@@ -92,6 +98,7 @@ public class Brain {
 
             masterItems.add(new item(itemName, itemDescription, roomID, Room.class.cast(location), itemDmg, itemHealth, monLocation, isArmor));
 
+			}
         }catch (Exception e){
 
         	//display message if anything wrong happens when reading items.txt
@@ -100,7 +107,7 @@ public class Brain {
             System.exit(0);
 
         }
-
+        finally{readFile.close();}
     }
 
 
@@ -192,24 +199,27 @@ public class Brain {
 
     //A.M - Puzzle Reader. Reads puzzle from Puzzle.txt
     public void setPuzzle() {
-        File puzzleFile = new File("puzzles.txt");
-        Scanner puzzleReader = null;
+    	
+		textFile = "puzzles" + ".txt";
+
 
         try {
-            puzzleReader = new Scanner(puzzleFile);
-            } catch (FileNotFoundException e) {
-                System.out.println("Puzzle file not found.");
-            }
+        	readFile = new Scanner(new File(textFile));
+           
 
-        while(puzzleReader != null && puzzleReader.hasNext()) {
-            itemName = puzzleReader.nextLine();
-            itemDescription = puzzleReader.nextLine();
-            String puzzleAnswer = puzzleReader.nextLine();
-            String puzzleHint = puzzleReader.nextLine();
-            String puzzleRoom = puzzleReader.nextLine();
+        while(readFile != null && readFile.hasNext()) {
+            itemName = readFile.nextLine();
+            itemDescription = readFile.nextLine();
+            String puzzleAnswer = readFile.nextLine();
+            String puzzleHint = readFile.nextLine();
+            String puzzleRoom = readFile.nextLine();
             int roomID = Integer.parseInt(puzzleRoom);
 
 			roomPuzzles.add(new Puzzle(itemName, itemDescription, puzzleAnswer, puzzleHint, roomID, Room.class.cast(location)));
+        	}
+        
+        } catch (FileNotFoundException e) {
+            System.out.println("Puzzle file not found.");
         }
     }
 
@@ -283,9 +293,13 @@ public class Brain {
     public void setMonster()
     {
     	textFile = "monsters" + ".txt";
-
     	try
-    	{
+		{
+    	readFile = new Scanner(new File(textFile));
+		
+		
+		while(readFile.hasNextLine())
+		{
     		itemName = readFile.nextLine();
             itemDescription = readFile.nextLine();
             String winMsg = readFile.nextLine();
@@ -298,8 +312,9 @@ public class Brain {
 			int monDmg = Integer.parseInt(dmg);
 
 			roomMonsters.add(new Monster(itemName, itemDescription, winMsg, loseMsg, roomID, monHp, monDmg, Room.class.cast(location)));
+		}
     	}
-catch (Exception e){
+    	catch (Exception e){
 
         	//Error message for monster file
             System.out.println("Reading Monster File Error!");
@@ -427,15 +442,22 @@ catch (Exception e){
     public void MonsterController(int ID) throws IOException
     {
     	//Prints the monster in the room with their stats
+    	
+    	Monster deadMon = new Monster(itemName, itemDescription, itemName, itemName, roomID, roomID, roomID, Room.class.cast(location));
+    	String answer = "";
+    	
     	System.out.println(" M O N S T E R ༼ง ◉_◉༽ง   ");
     	System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName());
+    	
+    	GameMap.rooms.get(ID).getMon().get(0).setMonDmg(GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
+    	
     	System.out.println("MONSTER STATS:");
     	System.out.println("Monster HP: " + GameMap.rooms.get(ID).getMon().get(0).getMonHp());
 		System.out.println("Monster Damage: " + GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
 		System.out.println("_________________________________________________________");
 
-		String answer = "";
-		Monster deadMon = new Monster(itemName, itemDescription, itemName, itemName, roomID, roomID, roomID, Room.class.cast(location));
+	
+		
 
 		while(GameMap.rooms.get(ID).getMon().get(0).getMonHp() > 0 )		{
 			System.out.println("What will you do? \n Attack or Ignore?: ");
