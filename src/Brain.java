@@ -232,8 +232,8 @@ public class Brain {
 	//A.M - Control Puzzle. Shows and handle a puzzle interface when there is a puzzle availalble within a room.
 	public void PuzzleController(int ID) throws IOException
 	{
-		Puzzle completed = new Puzzle(null, null, null, roomID, null, roomID, location);
-
+		Puzzle completed = new Puzzle(null, null, null, null, roomID, location);
+		
 		String answer = "";
 		System.out.println("PUZZLING PUZZLE BY THE MASTER PUZZLER");
 
