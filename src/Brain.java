@@ -202,27 +202,24 @@ public class Brain {
 
     //A.M - Puzzle Reader. Reads puzzle from Puzzle.txt
     public void setPuzzle() {
-    	
-		textFile = "puzzles" + ".txt";
-
+        File puzzleFile = new File("puzzles.txt");
+        Scanner puzzleReader = null;
 
         try {
-        	readFile = new Scanner(new File(textFile));
-           
+            puzzleReader = new Scanner(puzzleFile);
+            } catch (FileNotFoundException e) {
+                System.out.println("Puzzle file not found.");
+            }
 
-        while(readFile != null && readFile.hasNext()) {
-            itemName = readFile.nextLine();
-            itemDescription = readFile.nextLine();
-            String puzzleAnswer = readFile.nextLine();
-            String puzzleHint = readFile.nextLine();
-            String puzzleRoom = readFile.nextLine();
+        while(puzzleReader != null && puzzleReader.hasNext()) {
+            itemName = puzzleReader.nextLine();
+            itemDescription = puzzleReader.nextLine();
+            String puzzleAnswer = puzzleReader.nextLine();
+            String puzzleHint = puzzleReader.nextLine();
+            String puzzleRoom = puzzleReader.nextLine();
             int roomID = Integer.parseInt(puzzleRoom);
 
 			roomPuzzles.add(new Puzzle(itemName, itemDescription, puzzleAnswer, puzzleHint, roomID, Room.class.cast(location)));
-        	}
-        
-        } catch (FileNotFoundException e) {
-            System.out.println("Puzzle file not found.");
         }
     }
 
@@ -248,7 +245,7 @@ public class Brain {
 		Puzzle completed = new Puzzle(null, null, null, null, roomID, location);
 		
 		String answer = "";
-		System.out.println("PUZZLING PUZZLE BY THE MASTER PUZZLER");
+		System.out.println("PUZZLING PUZZLE BY THE MASTER PUZZLER. BE PUZZLED, HERE IS YOUR PUZZLING PUZZLE: ");
 
 		System.out.println(GameMap.rooms.get(ID).getPuz().get(0).getThingDescription());
 		int a =  GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
