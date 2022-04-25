@@ -29,7 +29,7 @@ public class Brain {
 
 	//pemberton
 	static List<String> commands = new ArrayList<>(Arrays.asList("n", "s", "e", "w", "take", "drop",
-			"inventory","explore","inspect","equip", "unequip", "consume", "attack", "ignore", "help", "save", "load"));
+			"inventory","explore","inspect","equip", "unequip", "consume", "attack", "ignore", "help", "save", "load","use"));
 
 
 	MonsterList roomMonsters = new MonsterList(); //Javier Z
@@ -190,6 +190,9 @@ public class Brain {
 				case "help":
 					playerHelp();
 					break;
+				case "use":
+					playerUse();
+					break;
 				default:
 					msg = verb + " is not understood.";
 					break;
@@ -248,16 +251,15 @@ public class Brain {
 		System.out.println("PUZZLING PUZZLE BY THE MASTER PUZZLER. BE PUZZLED, HERE IS YOUR PUZZLING PUZZLE: ");
 
 		System.out.println(GameMap.rooms.get(ID).getPuz().get(0).getThingDescription());
-		int a =  GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
 
-		for (int i = 0; i <= GameMap.rooms.get(ID).getPuz().get(0).getAttempts() ; i++) {
+		while(!answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
+		{
 			System.out.print("> ");
 			answer = playerInput.readLine();
 
 			if(answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 			{
-				System.out.println("Correct!");
-				i = GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
+				System.out.println("The riddle has been solved and the Master Puzzler is defeated once more. ");
 				completed = GameMap.rooms.get(ID).getPuz().get(0);
 
 			}
@@ -265,27 +267,18 @@ public class Brain {
 			{
 				System.out.println(GameMap.rooms.get(ID).getPuz().get(0).getHint());
 			}
-			else if(answer.equalsIgnoreCase("stop"))
-			{
-				System.out.println("Scrapping puzzle, you may continue the game...");
-				i = GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
-			}
 
 			else if(!answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 			{
-				System.out.println("Answer incorrent, try again... .");
-				System.out.println("You have "+ a + " tries left.");
-				a--;
+				System.out.println("The Master Puzzler has not been defeated. This room will forever be locked until it is not. Try again.");
 			}
 		}
 		if(answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 		{
 			GameMap.rooms.get(ID).getPuz().remove(completed);
 		}
-		System.out.println("You are back in " + GameMap.rooms.get(ID).getThingName());
+		System.out.println("The Puzzle is scrapped. The door lies ahead is unlocked.");
 	}
-
-
 
 
     //Javier Z
@@ -616,7 +609,154 @@ public class Brain {
 			}
 
 
+  //Javier
+  	private void playerConsume(String item)
+  	{
+  		item consumed = new item(null, null, roomID, location, roomID, roomID, null, false);
+  		for (item x: warrior.getInventory()) 
+  		{
+  			if (x.getItemName().equalsIgnoreCase(item))
+  			{
+  				consumed = x;
 
+
+  				System.out.println(warrior.getThingName() + " has consumed the " + x.getItemName());
+  			}
+
+  		}
+  		warrior.getInventory().remove(consumed);
+  	}
+
+  	//Javier
+  	private void playerUse() throws IOException{
+
+  		if(equipped.isEmpty() == false)
+  		{
+
+
+  		if(equipped.get(0).getThingName().equalsIgnoreCase("Teleportation"))
+  		{
+  			int pos = warrior.getPlayerPosition().getRoomID() ;
+  			System.out.println("--------------------T E L E P O R T I N G------------------- ");
+  			if(warrior.getPlayerPosition().getRoomID() <= 4)
+  			{
+
+  				warrior.setPlayerPosition(GameMap.rooms.get(5));
+
+  				warrior.getPlayerPosition().setVisited(true);
+
+  				pos = 5;
+
+  				System.out.println(warrior.getPlayerPosition().getThingDescription());
+  				System.out.println(" ");
+
+
+  				UnequipItem("Teleportation");
+  				playerConsume("Teleportation");
+  				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
+  				{
+  					PuzzleController(pos);
+  				}
+
+  				if(warrior.getPlayerPosition().getMon().size() >= 1) 
+  				{
+  					MonsterController(pos);
+  				}
+  				DirectionMessage();
+
+  			}
+
+  			else if (warrior.getPlayerPosition().getRoomID() <= 9)
+  			{
+
+  				pos = 10;
+  				warrior.setPlayerPosition(GameMap.rooms.get(10));
+  				warrior.getPlayerPosition().setVisited(true);
+  				System.out.println(warrior.getPlayerPosition().getThingDescription());
+  				System.out.println(" ");
+  				UnequipItem("Teleportation");
+  				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
+  				{
+  					PuzzleController(pos);
+  				}
+
+  				if(warrior.getPlayerPosition().getMon().size() >= 1) 
+  				{
+  					MonsterController(pos);
+  				}
+  				DirectionMessage();
+  			}
+
+  			else if(warrior.getPlayerPosition().getRoomID() <= 14)
+  			{
+
+  				pos = 15;
+  				warrior.setPlayerPosition(GameMap.rooms.get(15));
+  				warrior.getPlayerPosition().setVisited(true);
+
+  				System.out.println(warrior.getPlayerPosition().getThingDescription());
+  				System.out.println(" ");
+
+
+
+  				UnequipItem("Teleportation");
+
+
+  				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
+  				{
+  					PuzzleController(pos);
+  				}
+
+  				if(warrior.getPlayerPosition().getMon().size() >= 1) 
+  				{
+  					MonsterController(pos);
+  				}
+  				DirectionMessage();
+  			}
+
+
+  			else if(warrior.getPlayerPosition().getRoomID() <= 18)
+  			{
+
+  				pos = 19;
+  				warrior.setPlayerPosition(GameMap.rooms.get(19));
+  				warrior.getPlayerPosition().setVisited(true);
+
+
+  				System.out.println(warrior.getPlayerPosition().getThingDescription());
+  				System.out.println(" ");
+  				UnequipItem("Teleportation");
+  				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
+  				{
+  					PuzzleController(pos);
+  				}
+
+  				if(warrior.getPlayerPosition().getMon().size() >= 1) 
+  				{
+  					MonsterController(pos);
+  				}
+  				DirectionMessage();
+
+  			}
+  			else
+  			{
+  				System.out.println("cannot use that item in the final room");
+  			}
+
+
+
+  		}
+  		else
+  		{
+  			System.out.println("You don't have a teleportation consumable");
+  		}
+
+  		}
+  		else
+  		{
+  			System.out.println("You don't have teleportation equipped");
+  		}
+  	}
     private void playerExplore()
 	{
 		String s = "";
