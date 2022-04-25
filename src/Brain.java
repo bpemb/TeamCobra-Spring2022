@@ -438,8 +438,9 @@ public class Brain {
     	
     	Monster deadMon = new Monster(itemName, itemDescription, itemName, itemName, roomID, roomID, roomID, Room.class.cast(location));
     	String answer = "";
-    	
-    	System.out.println(" M O N S T E R ༼ง ◉_◉༽ง   ");
+    	System.out.println(" _______________");					
+    	System.out.println("| M O N S T E R | ");
+    	System.out.println("-----------------");
     	System.out.println(GameMap.rooms.get(ID).getMon().get(0).getThingName());
     	
     	GameMap.rooms.get(ID).getMon().get(0).setMonDmg(GameMap.rooms.get(ID).getMon().get(0).getMonDmg());
@@ -530,6 +531,7 @@ public class Brain {
 						System.out.print("> ");
 						answer = playerInput.readLine();
 
+						//Saif
 						if (answer.equalsIgnoreCase("Quit"))
 						{	
 							MainMenuAndSounds gameEnd = new MainMenuAndSounds();
@@ -757,6 +759,8 @@ public class Brain {
   			System.out.println("You don't have teleportation equipped");
   		}
   	}
+  	
+  	//pemberton
     private void playerExplore()
 	{
 		String s = "";
@@ -768,6 +772,7 @@ public class Brain {
 	}
 
 
+    //pemberton
     private void playerHeal()
 	{
 		if (warrior.getPlayerHealth() < playerMaxHealth)
@@ -784,6 +789,7 @@ public class Brain {
 		}
 	}
 
+    //pemberton
     private void playerHelp()
 	{
 		int count = 1;
@@ -795,6 +801,7 @@ public class Brain {
 	}
 
 
+    //pemberton
     private void MoveItem(String verb, String noun)
 	{
 		if(verb.equalsIgnoreCase("drop"))
