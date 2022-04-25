@@ -239,7 +239,7 @@ public class Brain {
 		}
 	}
 
-	//A.M - Control Puzzle. Shows and handle a puzzle interface when there is a puzzle availalble within a room.
+	//A.M - Control Puzzle. Shows and handle a puzzle interface when there is a puzzle available within a room.
 	public void PuzzleController(int ID) throws IOException
 	{
 		Puzzle completed = new Puzzle(null, null, null, null, roomID, location);
