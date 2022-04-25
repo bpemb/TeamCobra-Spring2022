@@ -589,6 +589,7 @@ public class Brain {
 			}
 		}
 
+		//Javier
 		//Victory mechanic, ,monster is defeated and item is displayed + added to inventory
 		if (GameMap.rooms.get(ID).getMon().get(0).getMonHp() <= 0 && warrior.getPlayerHealth() > 0)
 		{
