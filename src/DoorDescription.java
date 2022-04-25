@@ -3,6 +3,8 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.IOException;
 
+
+// J A V I E R 
 public class DoorDescription {
 	
 	//attributes

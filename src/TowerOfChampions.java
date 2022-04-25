@@ -20,6 +20,7 @@ public abstract class TowerOfChampions {
 			e.printStackTrace();
 		}
 		
+		//pemberton on down
 		Brain txtGame = new Brain();
 		
 		txtGame.Intro();

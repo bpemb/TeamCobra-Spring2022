@@ -9,7 +9,6 @@ public class Puzzle extends Thing {
 
     private String puzzleAnswer;
     private String puzzleHint;
-    private int puzzleAttempts;
     private int roomID;
     private Room location;
 
@@ -17,7 +16,6 @@ public class Puzzle extends Thing {
                   Room location) {
         super(thingName, thingDescription);
         this.puzzleAnswer = puzzleAnswer;
-        this.puzzleAttempts = puzzleAttempts;
         this.puzzleHint = puzzleHint;
         this.roomID = roomID;
         this.location = location;
@@ -41,15 +39,6 @@ public class Puzzle extends Thing {
 
     public void setHint(String hint) {
         this.puzzleHint = hint;
-    }
-
-    public int getAttempts() {
-        return puzzleAttempts;
-    }
-
-
-    public void setAttempts(int attempts) {
-        this.puzzleAttempts = attempts;
     }
 
 
