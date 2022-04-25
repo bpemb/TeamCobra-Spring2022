@@ -68,7 +68,7 @@ A key for a locked door.
 0
 Arroziossor
 false
-Teleportation Consumable 
+Teleportation
 This 1 consumable allows the player to teleport
 11111
 0
