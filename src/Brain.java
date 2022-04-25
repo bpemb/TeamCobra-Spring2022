@@ -251,16 +251,15 @@ public class Brain {
 		System.out.println("PUZZLING PUZZLE BY THE MASTER PUZZLER. BE PUZZLED, HERE IS YOUR PUZZLING PUZZLE: ");
 
 		System.out.println(GameMap.rooms.get(ID).getPuz().get(0).getThingDescription());
-		int a =  GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
 
-		for (int i = 0; i <= GameMap.rooms.get(ID).getPuz().get(0).getAttempts() ; i++) {
+		while(!answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
+		{
 			System.out.print("> ");
 			answer = playerInput.readLine();
 
 			if(answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 			{
-				System.out.println("Correct!");
-				i = GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
+				System.out.println("The riddle has been solved and the Master Puzzler is defeated once more. ");
 				completed = GameMap.rooms.get(ID).getPuz().get(0);
 
 			}
@@ -268,27 +267,18 @@ public class Brain {
 			{
 				System.out.println(GameMap.rooms.get(ID).getPuz().get(0).getHint());
 			}
-			else if(answer.equalsIgnoreCase("stop"))
-			{
-				System.out.println("Scrapping puzzle, you may continue the game...");
-				i = GameMap.rooms.get(ID).getPuz().get(0).getAttempts();
-			}
 
 			else if(!answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 			{
-				System.out.println("Answer incorrent, try again... .");
-				System.out.println("You have "+ a + " tries left.");
-				a--;
+				System.out.println("The Master Puzzler has not been defeated. This room will forever be locked until it is not. Try again.");
 			}
 		}
 		if(answer.equalsIgnoreCase(GameMap.rooms.get(ID).getPuz().get(0).getAnswer()))
 		{
 			GameMap.rooms.get(ID).getPuz().remove(completed);
 		}
-		System.out.println("You are back in " + GameMap.rooms.get(ID).getThingName());
+		System.out.println("The Puzzle is scrapped. The door lies ahead is unlocked.");
 	}
-
-
 
 
     //Javier Z
