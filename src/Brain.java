@@ -613,6 +613,7 @@ public class Brain {
 
 
   //Javier
+    //consumes the item and deletes it from the inventory + displays a message
   	private void playerConsume(String item)
   	{
   		item consumed = new item(null, null, roomID, location, roomID, roomID, null, false);
@@ -633,29 +634,39 @@ public class Brain {
   	//Javier
   	private void playerUse() throws IOException{
 
+  		//If there is no item equipped, displays you don't have it equipped
   		if(equipped.isEmpty() == false)
   		{
 
 
+  			//checks to see if the item is the teleportation item, if not displays the item is not equipped
   		if(equipped.get(0).getThingName().equalsIgnoreCase("Teleportation"))
   		{
+  			// we set our current position into pos
   			int pos = warrior.getPlayerPosition().getRoomID() ;
   			System.out.println("--------------------T E L E P O R T I N G------------------- ");
+  			
+  			//if we are are in the rooms anywhere on floor 1
   			if(warrior.getPlayerPosition().getRoomID() <= 4)
   			{
 
+  				//our position gets set as the first room on the next floor
   				warrior.setPlayerPosition(GameMap.rooms.get(5));
 
+  				// sets position to true
   				warrior.getPlayerPosition().setVisited(true);
 
   				pos = 5;
 
+  				//prints room desc
   				System.out.println(warrior.getPlayerPosition().getThingDescription());
   				System.out.println(" ");
 
 
-  				UnequipItem("Teleportation");
-  				playerConsume("Teleportation");
+  				//calls the unequipItem and player consume method
+  				UnequipItem("teleportation");
+  				playerConsume("teleportation");
+  				//calls the puzzleController method and monsterController method if they have any puzzles or monsters in that room
   				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
   				{
   					PuzzleController(pos);
@@ -669,6 +680,7 @@ public class Brain {
 
   			}
 
+  			//else if checks to see if we're anywhere on the second floor, if so we get put in the first room of the third floor 
   			else if (warrior.getPlayerPosition().getRoomID() <= 9)
   			{
 
@@ -678,6 +690,7 @@ public class Brain {
   				System.out.println(warrior.getPlayerPosition().getThingDescription());
   				System.out.println(" ");
   				UnequipItem("Teleportation");
+  				playerConsume("teleportation");
   				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
   				{
   					PuzzleController(pos);
@@ -690,6 +703,7 @@ public class Brain {
   				DirectionMessage();
   			}
 
+  			//else if checks to see if we're anywhere on the third floor, if so we get put in the first room of the fourth floor 
   			else if(warrior.getPlayerPosition().getRoomID() <= 14)
   			{
 
@@ -703,7 +717,7 @@ public class Brain {
 
 
   				UnequipItem("Teleportation");
-
+  				playerConsume("teleportation");
 
   				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
   				{
@@ -718,6 +732,7 @@ public class Brain {
   			}
 
 
+  			//else if checks to see if we're anywhere on the third  floor, if so we get put in the LAST room of the fourth floor 
   			else if(warrior.getPlayerPosition().getRoomID() <= 18)
   			{
 
@@ -729,6 +744,7 @@ public class Brain {
   				System.out.println(warrior.getPlayerPosition().getThingDescription());
   				System.out.println(" ");
   				UnequipItem("Teleportation");
+  				playerConsume("teleportation");
   				if(warrior.getPlayerPosition().getPuz().size() >= 1) 
   				{
   					PuzzleController(pos);
@@ -741,6 +757,7 @@ public class Brain {
   				DirectionMessage();
 
   			}
+  			//if we're in the last room, we display that we can't use the item in the final room
   			else
   			{
   				System.out.println("cannot use that item in the final room");
